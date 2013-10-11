@@ -1,0 +1,12 @@
+<%= form_for @photo, :remote => true do |f| %>
+  <div class="field">
+    <%= f.label :file %>
+<%= f.file_field :file %>  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<div class="photos" id="photos">
+	
+</div>

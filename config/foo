@@ -1,0 +1,1 @@
+vi config/application.rb config/environments/test.rb config/environments/production.rb config/routes.rb
