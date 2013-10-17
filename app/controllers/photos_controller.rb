@@ -25,14 +25,22 @@ class PhotosController < ApplicationController
   # POST /photos
   # POST /photos.json
   def create
-    directory = "app/assets/staging"
-    
+    # This path within filesystem to which uploaded
+    # file will be copied. Server can not write to
+    # assets directory
+    directory = "public/staging"
+    # grab the ActionDispath::Http:UploadedFile object
+    file = params[:photo][:file]
+    #
+    orig_name = file.original_filename
+    # This is "path" for image  per image_tag and asset
+    # naming policy
+    @image="/staging/#{orig_name}"
 
     if request.post?
-      # name = params[:file].original_filename
-      # @path = File.join(directory, name)
-      # File.open(@path, "wb") { |f| f.write(params[:file].read) }
-      # send_file path, :type => 'image/jpeg', :disposition => 'inline'
+      path = File.join(directory, orig_name)
+      # copy tmp file into public
+      FileUtils.copy(file.tempfile.path, path)
     end
 
   end
