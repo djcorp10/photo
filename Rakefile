@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Photo::Application.load_tasks
+Photox::Application.load_tasks
